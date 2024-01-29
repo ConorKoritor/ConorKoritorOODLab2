@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Exercise8
+namespace Exercise9
 {
     internal class Program
     {
@@ -13,9 +13,9 @@ namespace Exercise8
             string[] names = { "Mary", "Joseph", "Michael", "Sarah", "Margaret", "John" };
 
             var query = names
-                .Where(n => n.Length > 4);
+                .OrderBy(n => n);
 
-            foreach( var name in query)
+            foreach (var name in query)
             {
                 Console.WriteLine(name);
             }
