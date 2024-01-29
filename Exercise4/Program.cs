@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.IO;
-using System.Xml.Linq;
 
-namespace Exercise3
+namespace Exercise4
 {
     internal class Program
     {
@@ -17,17 +16,21 @@ namespace Exercise3
             var query = from item in files
                         where item.Length > 1000
                         orderby item.Length descending, item.Name
-                        select new MyFileInfo
+                        select new
                         {
                             Name = item.Name,
                             Length = item.Length,
                             CreationTime = item.CreationTime
+         
                         };
-            Console.WriteLine(String.Format("{0,-40}{1,6:F0} MB {2}", "Filenames", "Size", "Creation Date"));
+            Console.WriteLine("File Name\tSize\t\tCreation Date");
 
-            foreach(MyFileInfo item in query)
+            foreach(var item in query)
             {
-                Console.WriteLine(item);
+                Console.WriteLine(
+                    "{0} \t{1} bytes, \t{2}",
+                    item.Name, item.Length, item.CreationTime.ToShortDateString()
+                    );
             }
 
             Console.ReadLine();
