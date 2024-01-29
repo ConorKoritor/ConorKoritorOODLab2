@@ -17,9 +17,8 @@ namespace Exercise7
         {
             int[] numbers = { 1, 5, 3, 6, 10, 12, 8 };
 
-             /*var query1 = from number in numbers
-                          orderby number descending
-                          select number;
+            /* var query1 = from number in numbers
+                          orderby number descending;
 
              var query2 = from number in query1
                           where number < 8
@@ -29,12 +28,10 @@ namespace Exercise7
                           select DoubleIt(number); */
 
             var query1 = numbers
-                .OrderByDescending(n => n)
-                .Select(n => n);
+                .OrderByDescending(n => n);
 
             var query2 = query1
-                .Where(n => n < 8)
-                .Select(n => n);
+                .Where(n => n < 8);
 
             var query3 = query2
                 .Select(n => DoubleIt(n));
